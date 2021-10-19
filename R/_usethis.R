@@ -46,6 +46,5 @@ library(rcmdcheck)
 devtools::build()
 rcmdcheck::rcmdcheck("../FOCI_0.1.3.tar.gz")
 
-
-
+# Use a specific GitHub Actions workflow
 usethis::use_github_action("pkgdown")

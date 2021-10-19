@@ -5,9 +5,26 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CODEC • FOCI</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../../bootstrap-toc.css">
+<!-- Inform modern browsers that this page supports both dark and light color schemes,
+  and the page author prefers light. --><meta name="color-scheme" content="dark light">
+<script>
+  // If `prefers-color-scheme` is not supported, fall back to light mode.
+  // i.e. In this case, inject the `light` CSS before the others, with
+  // no media filter so that it will be downloaded with highest priority.
+  if (window.matchMedia("(prefers-color-scheme: dark)").media === "not all") {
+    document.documentElement.style.display = "none";
+    document.head.insertAdjacentHTML(
+      "beforeend",
+      "<link id=\"css\" rel=\"stylesheet\" href=\"https://bootswatch.com/3/flatly/bootstrap.css\" onload=\"document.documentElement.style.display = ''\">"
+    );
+  }
+</script><title>CODEC • FOCI</title>
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- Flatly Theme - Light  --><link id="css-light" rel="stylesheet" href="https://bootswatch.com/3/flatly/bootstrap.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+<!-- Darkly Theme - Dark --><link id="css-dark" rel="stylesheet" href="https://bootswatch.com/3/darkly/bootstrap.css" media="(prefers-color-scheme: dark)">
+<!-- preferably CSS --><link rel="stylesheet" href="../../preferably.css">
+<link id="css-code-light" rel="stylesheet" href="../../code-color-scheme-light.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+<link id="css-code-dark" rel="stylesheet" href="../../code-color-scheme-dark.css" media="(prefers-color-scheme: dark)">
+<!-- bootstrap-toc --><link rel="stylesheet" href="../../bootstrap-toc.css">
 <script src="../../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
@@ -101,26 +118,26 @@
 <span class="va">y</span> <span class="op">=</span> <span class="op">(</span><span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/r/base/Arithmetic.html">%%</a></span> <span class="fl">1</span>
 <span class="co"># y is independent of each of column of x </span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.00957927</span>
+<span class="co">#&gt; [1] 0.00089721</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.01043679</span>
+<span class="co">#&gt; [1] -0.00726225</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.01682517</span>
+<span class="co">#&gt; [1] -0.00567849</span>
 
 <span class="co"># y is independent of the first two columns of x, x[, c(1, 2)]</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.00960015</span>
+<span class="co">#&gt; [1] 0.01060491</span>
 
 <span class="co"># y is a function of x</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.8782298</span>
+<span class="co">#&gt; [1] 0.8595432</span>
 
 <span class="co"># conditional on the last column of x, y is a function of the first two columns</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.876146</span>
+<span class="co">#&gt; [1] 0.8603363</span>
 <span class="co"># conditional on x[, 3], y is independent of x[, 1]</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.01279579</span></code></pre></div>
+<span class="co">#&gt; [1] 0.006120644</span></code></pre></div>
 <p>In the following example we have generated a <span class="math inline">\(10000 \times 2\)</span> matrix <span class="math inline">\(x\)</span>, with i.i.d normal standard elements. Each row of this matrix represent a point in the 2-dimensional plane. We call the square distance of this point from the origin <span class="math inline">\(y\)</span> and its angle with the horizontal axis, <span class="math inline">\(z\)</span>. It can be seen that <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> are independent of each other, but conditional on any of the coordinates of the given point <span class="math inline">\(y\)</span> can be fully determind using <span class="math inline">\(z\)</span>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">=</span> <span class="fl">1000</span>
@@ -130,10 +147,10 @@
 <span class="va">z</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">atan</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">/</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span><span class="op">)</span>
 <span class="co"># y is independent of z</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.01943102</span>
+<span class="co">#&gt; [1] -0.01438501</span>
 <span class="co"># conditional on x[, 1], y is a function of z</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.8277085</span></code></pre></div>
+<span class="co">#&gt; [1] 0.7994229</span></code></pre></div>
 </div>
   </div>
 
@@ -152,7 +169,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Made with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1, using <a href="https://preferably.amirmasoudabdol.name/?source=footer">preferably</a> template.</p>
 </div>
 
       </footer>
