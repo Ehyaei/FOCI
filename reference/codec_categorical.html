@@ -22,7 +22,7 @@
   }
 </script>
 
-<title>Function reference • FOCI</title>
+<title>Estimate conditional dependence coefficient (CODEC) for categorical observation — codec_categorical • FOCI</title>
 
 
 <!-- jquery -->
@@ -65,7 +65,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Estimate conditional dependence coefficient (CODEC) for categorical observation — codec_categorical" />
+<meta property="og:description" content="The conditional dependence coefficient (CODEC) is a measure of the amount of conditional dependence between
+a random variable Y and a random vector Z given a random vector X, based on an i.i.d. sample of (Y, Z, X).
+The coefficient can take any real value in a finite sample, but is asymptotically guaranteed to be between 0 and 1." />
 
 
 
@@ -87,7 +90,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -166,60 +169,78 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Estimate conditional dependence coefficient (CODEC) for categorical observation</h1>
+    
+    <div class="hidden name"><code>codec_categorical.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>The conditional dependence coefficient (CODEC) is a measure of the amount of conditional dependence between
+a random variable Y and a random vector Z given a random vector X, based on an i.i.d. sample of (Y, Z, X).
+The coefficient can take any real value in a finite sample, but is asymptotically guaranteed to be between 0 and 1.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>codec_categorical</span><span class='op'>(</span><span class='va'>Y</span>, <span class='va'>Z</span>, X <span class='op'>=</span> <span class='cn'>NULL</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>, type <span class='op'>=</span> <span class='st'>"continuous"</span><span class='op'>)</span></pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="codec.html">codec()</a></code> </p>
-        </td>
-        <td><p>Estimate the conditional dependence coefficient (CODEC)</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="codec_categorical.html">codec_categorical()</a></code> </p>
-        </td>
-        <td><p>Estimate conditional dependence coefficient (CODEC) for categorical observation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="foci.html">foci()</a></code> </p>
-        </td>
-        <td><p>Variable selection by the FOCI algorithm</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="foci_categorical.html">foci_categorical()</a></code> </p>
-        </td>
-        <td><p>Variable selection by the FOCI algorithm</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>Y</th>
+      <td><p>Categorical or discrete value vector (length n)</p></td>
+    </tr>
+    <tr>
+      <th>Z</th>
+      <td><p>Matrix (n by q)</p></td>
+    </tr>
+    <tr>
+      <th>X</th>
+      <td><p>Matrix (n by p), default is NULL</p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>Remove NAs if TRUE</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>a factor variable indicating whether X and Z are continuous vectors or discrete, the
+default value is continuous</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>The conditional dependence coefficient (CODEC) of Y and Z given X. If X == NULL, this is just a
+measure of the dependence between Y and Z.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The value returned by codec can be positive or negative. Asymptotically, it is guaranteed
+to be between 0 and 1. A small value indicates low conditional dependence between Y and Z given X, and
+a high value indicates strong conditional dependence. The codec_categorical function is used by the  <code><a href='foci_categorical.html'>foci_categorical</a></code> function
+for variable selection.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>!!!!!!!!! NOT CLEAR WHERE YET :D !!!!!!!!!</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='codec.html'>codec</a></code>, <code><a href='https://rdrr.io/pkg/XICOR/man/xicor.html'>xicor</a></code></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Mona Azadkia, Sourav Chatterjee, and Norman Matloff</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>n</span> <span class='op'>=</span> <span class='fl'>1000</span>
+<span class='va'>p</span> <span class='op'>=</span> <span class='fl'>2</span>
+<span class='va'>x</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>p</span><span class='op'>)</span>, ncol <span class='op'>=</span> <span class='va'>p</span><span class='op'>)</span>
+<span class='va'>y</span> <span class='op'>=</span> <span class='op'>(</span><span class='fl'>2</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fl'>2</span> <span class='op'>*</span> <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>*</span> <span class='op'>(</span><span class='fl'>2</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fl'>2</span> <span class='op'>*</span> <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='fu'>codec_categorical</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.96</div><div class='input'><span class='fu'>codec_categorical</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] -0.026</div><div class='input'><span class='fu'>codec_categorical</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.016</div><div class='input'><span class='fu'>codec_categorical</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span>, <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.9593496</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

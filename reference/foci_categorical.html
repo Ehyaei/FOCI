@@ -22,7 +22,7 @@
   }
 </script>
 
-<title>Variable selection by the FOCI algorithm — foci • FOCI</title>
+<title>Variable selection by the FOCI algorithm — foci_categorical • FOCI</title>
 
 
 <!-- jquery -->
@@ -65,8 +65,8 @@
 
 
 
-<meta property="og:title" content="Variable selection by the FOCI algorithm — foci" />
-<meta property="og:description" content="FOCI is a variable selection algorithm based on the measure of conditional dependence codec." />
+<meta property="og:title" content="Variable selection by the FOCI algorithm — foci_categorical" />
+<meta property="og:description" content="FOCI is a variable selection algorithm based on the measure of conditional dependence codec_categorical." />
 
 
 
@@ -171,20 +171,21 @@
     <div class="page-header">
     <h1>Variable selection by the FOCI algorithm</h1>
     
-    <div class="hidden name"><code>foci.Rd</code></div>
+    <div class="hidden name"><code>foci_categorical.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>FOCI is a variable selection algorithm based on the measure of conditional dependence <code><a href='codec.html'>codec</a></code>.</p>
+    <p>FOCI is a variable selection algorithm based on the measure of conditional dependence <code><a href='codec_categorical.html'>codec_categorical</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>foci</span><span class='op'>(</span>
+    <pre class="usage"><span class='fu'>foci_categorical</span><span class='op'>(</span>
   <span class='va'>Y</span>,
   <span class='va'>X</span>,
   num_features <span class='op'>=</span> <span class='cn'>NULL</span>,
   stop <span class='op'>=</span> <span class='cn'>TRUE</span>,
   na.rm <span class='op'>=</span> <span class='cn'>TRUE</span>,
   standardize <span class='op'>=</span> <span class='st'>"scale"</span>,
+  type <span class='op'>=</span> <span class='st'>"continuous"</span>,
   numCores <span class='op'>=</span> <span class='fu'>parallel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/parallel/detectCores.html'>detectCores</a></span><span class='op'>(</span><span class='op'>)</span>,
   parPlat <span class='op'>=</span> <span class='st'>"none"</span>,
   printIntermed <span class='op'>=</span> <span class='cn'>TRUE</span>
@@ -221,6 +222,11 @@ The default value is "scale" and normalizes each column of X to have mean zero a
 map the values of each column of X to 0, 1.</p></td>
     </tr>
     <tr>
+      <th>type</th>
+      <td><p>type a factor variable indicating whether X and Z are continuous vectors or discrete, the
+default value is continuous</p></td>
+    </tr>
+    <tr>
       <th>numCores</th>
       <td><p>Number of cores that are going to be used for
 parallelizing the variable selecction process.</p></td>
@@ -243,14 +249,14 @@ threads on the host machine.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object of class "foci", with attributes
+    <p>An object of class "foci_categorical", with attributes
 <code>selectedVar</code>, showing the selected variables in decreasing
 order of (conditional) predictive power, and <code>stepT</code>, listing
 the 'codec' values. Typically the latter will begin to level off at
 some point, with additional marginal improvements being small.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>FOCI is a forward stepwise algorithm that uses the conditional dependence coefficient (<code><a href='codec.html'>codec</a></code>)
+    <p>FOCI is a forward stepwise algorithm that uses the conditional dependence coefficient (<code><a href='codec_categorical.html'>codec_categorical</a></code>)
 at each step, instead of the multiple correlation coefficient
 as in ordinary forward stepwise. If <code>stop</code> == TRUE, the process is stopped at the first instance of
 nonpositive codec, thereby selecting a subset of variables. Otherwise, a set of covariates of size
@@ -288,62 +294,17 @@ columns.</p>
 full dataset, it may be absent entirely in some chunk.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Azadkia, M. and Chatterjee, S. (2019). A simple measure of conditional dependence.
-<a href='https://arxiv.org/pdf/1910.12327.pdf'>https://arxiv.org/pdf/1910.12327.pdf</a>.</p>
-<p>Matloff, N. (2016). Software Alchemy: Turning Complex Statistical Computations into Embarrassingly-Parallel Ones.
+    <p>!!!!!!!!! NOT CLEAR WHERE YET :D !!!!!!!!!</p>
+<p>Matloff, N. (2016). Software Alchemy: Turning Complex
+Statistical Computations into Embarrassingly-Parallel Ones.
 <em>J. of Stat. Software.</em></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='codec.html'>codec</a></code>, <code><a href='https://rdrr.io/pkg/XICOR/man/xicor.html'>xicor</a></code></p></div>
+    <div class='dont-index'><p><code><a href='foci.html'>foci</a></code>, <code><a href='codec.html'>codec</a></code>, <code><a href='https://rdrr.io/pkg/XICOR/man/xicor.html'>xicor</a></code></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Mona Azadkia, Sourav Chatterjee, and Norman Matloff</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Example 1</span>
-<span class='va'>n</span> <span class='op'>=</span> <span class='fl'>1000</span>
-<span class='va'>p</span> <span class='op'>=</span> <span class='fl'>100</span>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='va'>p</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='va'>p</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/seq.html'>seq</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>p</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>y</span> <span class='op'>&lt;-</span> <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>*</span> <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>10</span><span class='op'>]</span> <span class='op'>+</span> <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>20</span><span class='op'>]</span><span class='op'>^</span><span class='fl'>2</span>
-<span class='co'># with num_features equal to 3 and stop equal to FALSE, foci will give a list of</span>
-<span class='co'># three selected features</span>
-<span class='va'>result1</span> <span class='op'>=</span> <span class='fu'>foci</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, num_features <span class='op'>=</span> <span class='fl'>3</span>, stop <span class='op'>=</span> <span class='cn'>FALSE</span>, numCores <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>result1</span>
-</div><div class='output co'>#&gt; $selectedVar
-#&gt;    index names
-#&gt; 1:    20   x20
-#&gt; 2:    10   x10
-#&gt; 3:     1    x1
-#&gt; 
-#&gt; $stepT
-#&gt; [1] 0.3451353 0.4590275 0.8383778
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "foci"</div><div class='input'><span class='co'># Example 2</span>
-<span class='co'># same example, but stop according to the stopping rule</span>
-<span class='va'>result2</span> <span class='op'>=</span> <span class='fu'>foci</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, numCores <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>result2</span>
-</div><div class='output co'>#&gt; $selectedVar
-#&gt;    index names
-#&gt; 1:    20   x20
-#&gt; 2:    10   x10
-#&gt; 3:     1    x1
-#&gt; 
-#&gt; $stepT
-#&gt; [1] 0.3451353 0.4590275 0.8383778
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "foci"</div><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># Windows use of multicore</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>parallel</span><span class='op'>)</span>
-<span class='va'>cls</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/parallel/makeCluster.html'>makeCluster</a></span><span class='op'>(</span><span class='fu'>parallel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/parallel/detectCores.html'>detectCores</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>foci</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, parPlat <span class='op'>=</span> <span class='va'>cls</span><span class='op'>)</span>
-<span class='co'># run on physical cluster</span>
-<span class='va'>cls</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/parallel/makeCluster.html'>makePSOCKcluster</a></span><span class='op'>(</span><span class='st'>'machineA'</span>,<span class='st'>'machineB'</span><span class='op'>)</span>
-<span class='fu'>foci</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, parPlat <span class='op'>=</span> <span class='va'>cls</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
