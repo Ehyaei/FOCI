@@ -5,27 +5,27 @@
 ####################################################################
 
 # foci_main -------------------------------------------------------------------------
-# Variable selection by the FOCI algorithm
-#
-# foci_main is the core function for foci, implementing the
-# variable selection algorithm based on the measure of conditional dependence \code{\link{codec}}.
-#
-# @param X Matrix of predictors (n by p)
-# @param Y Vector of responses (length n)
-# @param num_features Number of variables to be selected, cannot be larger than p. The default value is NULL and in that
-# case it will be set equal to p. If stop == TRUE (see below), then num_features is irrelevant.
-# @param stop Stops at the first instance of negative codec, if TRUE.
-# @param numCores number of cores that are going to be used for parallelizing the process.
-# @details foci is a forward stepwise algorithm that uses the conditional dependence coefficient (\code{\link{codec}})
-# at each step, instead of the multiple correlation coefficient
-# as in ordinary forward stepwise. If stop == TRUE, the process is stopped at the first instance of
-# nonpositive codec, thereby selecting subset of variables. Otherwise, a set of covariates of size
-# num_features, ordered according to predictive power (as measured by codec) is produced.
-# @return An object of class "foci", with three attributes a vector of selected covariates,
-# their names and their cumulative dependence value with Y in decreasing order of predictive power.
-# @author Mona Azadkia, Sourav Chatterjee, and Norman Matloff
-# @references Azadkia, M. and Chatterjee, S. (2019). A simple measure of conditional dependence. \url{https://arxiv.org/pdf/1910.12327.pdf}
-# @seealso \code{\link{codec}}
+#' Variable selection by the FOCI algorithm
+#'
+#' foci_main is the core function for foci, implementing the
+#' variable selection algorithm based on the measure of conditional dependence \code{\link{codec}}.
+#'
+#' @param X Matrix of predictors (n by p)
+#' @param Y Vector of responses (length n)
+#' @param num_features Number of variables to be selected, cannot be larger than p. The default value is NULL and in that
+#' case it will be set equal to p. If stop == TRUE (see below), then num_features is irrelevant.
+#' @param stop Stops at the first instance of negative codec, if TRUE.
+#' @param numCores number of cores that are going to be used for parallelizing the process.
+#' @details foci is a forward stepwise algorithm that uses the conditional dependence coefficient (\code{\link{codec}})
+#' at each step, instead of the multiple correlation coefficient
+#' as in ordinary forward stepwise. If stop == TRUE, the process is stopped at the first instance of
+#' nonpositive codec, thereby selecting subset of variables. Otherwise, a set of covariates of size
+#' num_features, ordered according to predictive power (as measured by codec) is produced.
+#' @return An object of class "foci", with three attributes a vector of selected covariates,
+#' their names and their cumulative dependence value with Y in decreasing order of predictive power.
+#' @author Mona Azadkia, Sourav Chatterjee, and Norman Matloff
+#' @references Azadkia, M. and Chatterjee, S. (2019). A simple measure of conditional dependence. \url{https://arxiv.org/pdf/1910.12327.pdf}
+#' @seealso \code{\link{codec}}
 foci_main <- function(Y, X, num_features = NULL, stop = TRUE, numCores = parallel::detectCores()){
 
   namesX <- colnames(X)

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Estimate the conditional dependence coefficient (CODEC) — codec • FOCI</title>
+<title>Variable selection by the FOCI algorithm — foci_main • FOCI</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,9 @@
 
 
 
-<meta property="og:title" content="Estimate the conditional dependence coefficient (CODEC) — codec" />
-<meta property="og:description" content="The conditional dependence coefficient (CODEC) is a measure of the amount of conditional dependence between
-a random variable Y and a random vector Z given a random vector X, based on an i.i.d. sample of (Y, Z, X).
-The coefficient is asymptotically guaranteed to be between 0 and 1." />
+<meta property="og:title" content="Variable selection by the FOCI algorithm — foci_main" />
+<meta property="og:description" content="foci_main is the core function for foci, implementing the
+variable selection algorithm based on the measure of conditional dependence codec." />
 
 
 
@@ -120,80 +119,71 @@ The coefficient is asymptotically guaranteed to be between 0 and 1." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Estimate the conditional dependence coefficient (CODEC)</h1>
+    <h1>Variable selection by the FOCI algorithm</h1>
     
-    <div class="hidden name"><code>codec.Rd</code></div>
+    <div class="hidden name"><code>foci_main.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The conditional dependence coefficient (CODEC) is a measure of the amount of conditional dependence between
-a random variable Y and a random vector Z given a random vector X, based on an i.i.d. sample of (Y, Z, X).
-The coefficient is asymptotically guaranteed to be between 0 and 1.</p>
+    <p>foci_main is the core function for foci, implementing the
+variable selection algorithm based on the measure of conditional dependence <code><a href='codec.html'>codec</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>codec</span><span class='op'>(</span><span class='va'>Y</span>, <span class='va'>Z</span>, X <span class='op'>=</span> <span class='cn'>NULL</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>foci_main</span><span class='op'>(</span>
+  <span class='va'>Y</span>,
+  <span class='va'>X</span>,
+  num_features <span class='op'>=</span> <span class='cn'>NULL</span>,
+  stop <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  numCores <span class='op'>=</span> <span class='fu'>parallel</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/parallel/detectCores.html'>detectCores</a></span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>Y</th>
-      <td><p>Vector (length n)</p></td>
-    </tr>
-    <tr>
-      <th>Z</th>
-      <td><p>Matrix (n by q)</p></td>
+      <td><p>Vector of responses (length n)</p></td>
     </tr>
     <tr>
       <th>X</th>
-      <td><p>Matrix (n by p), default is NULL</p></td>
+      <td><p>Matrix of predictors (n by p)</p></td>
     </tr>
     <tr>
-      <th>na.rm</th>
-      <td><p>Remove NAs if TRUE</p></td>
+      <th>num_features</th>
+      <td><p>Number of variables to be selected, cannot be larger than p. The default value is NULL and in that
+case it will be set equal to p. If stop == TRUE (see below), then num_features is irrelevant.</p></td>
+    </tr>
+    <tr>
+      <th>stop</th>
+      <td><p>Stops at the first instance of negative codec, if TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>numCores</th>
+      <td><p>number of cores that are going to be used for parallelizing the process.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The conditional dependence coefficient (CODEC) of Y and Z given X. If X == NULL, this is just a
-measure of the dependence between Y and Z.</p>
+    <p>An object of class "foci", with three attributes a vector of selected covariates,
+their names and their cumulative dependence value with Y in decreasing order of predictive power.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The value returned by codec can be positive or negative. Asymptotically, it is guaranteed
-to be between 0 and 1. A small value indicates low conditional dependence between Y and Z given X, and
-a high value indicates strong conditional dependence. The codec function is used by the  <code><a href='foci.html'>foci</a></code> function
-for variable selection.</p>
+    <p>foci is a forward stepwise algorithm that uses the conditional dependence coefficient (<code><a href='codec.html'>codec</a></code>)
+at each step, instead of the multiple correlation coefficient
+as in ordinary forward stepwise. If stop == TRUE, the process is stopped at the first instance of
+nonpositive codec, thereby selecting subset of variables. Otherwise, a set of covariates of size
+num_features, ordered according to predictive power (as measured by codec) is produced.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Azadkia, M. and Chatterjee, S. (2019). A simple measure
-of conditional dependence.
-<a href='https://arxiv.org/pdf/1910.12327.pdf'>https://arxiv.org/pdf/1910.12327.pdf</a>.</p>
+    <p>Azadkia, M. and Chatterjee, S. (2019). A simple measure of conditional dependence. <a href='https://arxiv.org/pdf/1910.12327.pdf'>https://arxiv.org/pdf/1910.12327.pdf</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='foci.html'>foci</a></code>, <code><a href='https://rdrr.io/pkg/XICOR/man/xicor.html'>xicor</a></code></p></div>
+    <div class='dont-index'><p><code><a href='codec.html'>codec</a></code></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Mona Azadkia, Sourav Chatterjee, Norman Matloff</p>
+    <p>Mona Azadkia, Sourav Chatterjee, and Norman Matloff</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='va'>n</span> <span class='op'>=</span> <span class='fl'>1000</span></span>
-<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/stats/Uniform.html'>runif</a></span><span class='op'>(</span><span class='va'>n</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='va'>n</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='va'>x</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span> <span class='fl'>1</span></span>
-<span class='r-in'><span class='co'># given x[, 1], y is a function of x[, 2]</span></span>
-<span class='r-in'><span class='fu'>codec</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>2</span><span class='op'>]</span>, <span class='va'>x</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.918993</span>
-<span class='r-in'><span class='co'># y is a function of x</span></span>
-<span class='r-in'><span class='fu'>codec</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.9186399</span>
-<span class='r-in'><span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>n</span><span class='op'>)</span></span>
-<span class='r-in'><span class='co'># y is a function of x given z</span></span>
-<span class='r-in'><span class='fu'>codec</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>x</span>, <span class='va'>z</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.6836949</span>
-<span class='r-in'><span class='co'># y is independent of z given x</span></span>
-<span class='r-in'><span class='fu'>codec</span><span class='op'>(</span><span class='va'>y</span>, <span class='va'>z</span>, <span class='va'>x</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] -2.804572</span>
-</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

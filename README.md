@@ -10,11 +10,6 @@ status](https://github.com/Ehyaei/FOCI/workflows/R-CMD-check/badge.svg)](https:/
 [![](https://img.shields.io/badge/devel%20version-0.1.3-green.svg)](https://github.com/Ehyaei/FOCI)
 [![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 
-<!-- badges: start -->
-
-[![R-CMD-check](https://github.com/ehyaei/FOCI/workflows/R-CMD-check/badge.svg)](https://github.com/ehyaei/FOCI/actions)
-<!-- badges: end -->
-
 Package `FOCI`, implements the variable selection algorithm **Feature
 Ordering by Conditional Independence** algorithm introduced in the paper
 [*A Simple Measure Of Conditional

@@ -28,7 +28,8 @@ Imports:
   RANN, 
   proxy, 
   parallel, 
-  gmp
+  gmp,
+  XICOR
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
