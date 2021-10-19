@@ -1,7 +1,7 @@
 Package: FOCI
 Type: Package
 Title: Feature Ordering by Conditional Independence
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: c(person("Mona", "Azadkia", email = "monaazadkia@gmail.com", 
     role = c("aut", "cre")),
     person("Sourav", "Chatterjee", email = "souravc@stanford.edu",

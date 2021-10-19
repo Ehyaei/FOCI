@@ -4,14 +4,6 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -19,7 +11,9 @@ knitr::opts_chunk$set(
   comment = "#>",
   results='hide', 
   message=FALSE, 
-  warning=FALSE
+  warning=FALSE,
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
 
@@ -31,7 +25,7 @@ knitr::opts_chunk$set(
 cat(
   badger::badge_github_actions("Ehyaei/FOCI"),
   badger::badge_devel("Ehyaei/FOCI", "green"),
-  badger::badge_lifecycle("stable")
+  badger::badge_cran_release("FOCI", "blue")
 )
 ```
 
