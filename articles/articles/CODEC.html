@@ -141,26 +141,26 @@
 <span class="va">y</span> <span class="op">=</span> <span class="op">(</span><span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">+</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">+</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span> <span class="op">%%</span> <span class="fl">1</span>
 <span class="co"># y is independent of each of column of x </span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.00398217</span>
+<span class="co">#&gt; [1] 0.00349023</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.01600599</span>
+<span class="co">#&gt; [1] 0.01277049</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.00347187</span>
+<span class="co">#&gt; [1] 0.00601527</span>
 
 <span class="co"># y is independent of the first two columns of x, x[, c(1, 2)]</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.00744003</span>
+<span class="co">#&gt; [1] 0.00149775</span>
 
 <span class="co"># y is a function of x</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.8767203</span>
+<span class="co">#&gt; [1] 0.8696109</span>
 
 <span class="co"># conditional on the last column of x, y is a function of the first two columns</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">]</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.8771468</span>
+<span class="co">#&gt; [1] 0.8688219</span>
 <span class="co"># conditional on x[, 3], y is independent of x[, 1]</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">3</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.003434237</span></code></pre></div>
+<span class="co">#&gt; [1] -0.004497111</span></code></pre></div>
 <p>In the following example we have generated a <span class="math inline">\(10000 \times 2\)</span> matrix <span class="math inline">\(x\)</span>, with i.i.d normal standard elements. Each row of this matrix represent a point in the 2-dimensional plane. We call the square distance of this point from the origin <span class="math inline">\(y\)</span> and its angle with the horizontal axis, <span class="math inline">\(z\)</span>. It can be seen that <span class="math inline">\(y\)</span> and <span class="math inline">\(z\)</span> are independent of each other, but conditional on any of the coordinates of the given point <span class="math inline">\(y\)</span> can be fully determind using <span class="math inline">\(z\)</span>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">n</span> <span class="op">=</span> <span class="fl">1000</span>
@@ -170,10 +170,10 @@
 <span class="va">z</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">atan</a></span><span class="op">(</span><span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">/</span> <span class="va">x</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span><span class="op">)</span>
 <span class="co"># y is independent of z</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.06594307</span>
+<span class="co">#&gt; [1] 0.02217902</span>
 <span class="co"># conditional on x[, 1], y is a function of z</span>
 <span class="fu"><a href="../../reference/codec.html">codec</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">z</span>, <span class="va">x</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.8012202</span></code></pre></div>
+<span class="co">#&gt; [1] 0.8175808</span></code></pre></div>
 </div>
   </div>
 
