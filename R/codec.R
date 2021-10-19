@@ -16,6 +16,7 @@
 #' @return The conditional dependence coefficient (CODEC) of Y and Z given X. If X == NULL, this is just a
 #' measure of the dependence between Y and Z.
 #' @import data.table
+#' @importFrom stats complete.cases sd
 #' @export
 #' @author Mona Azadkia, Sourav Chatterjee, Norman Matloff
 #' @references Azadkia, M. and Chatterjee, S. (2019). A simple measure
