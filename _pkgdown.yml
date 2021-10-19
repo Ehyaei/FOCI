@@ -1,2 +1,17 @@
+navbar:
+  structure:
+    left:  [home, intro, articles, reference]
+    right: [github,issue,homepage]
+  components:
+    github:
+      icon: fab fa-github fa-lg
+      href: https://github.com/ehyaei/FOCI
+    issue:
+      icon: fas fa-question-circle fa-lg
+      href: https://github.com/ehyaei/FOCI/issues/
+    homepage:
+      icon: fas fa-smile fa-lg
+      href: https://people.math.ethz.ch/~mazadkia/
+
 template:
   package: preferably
