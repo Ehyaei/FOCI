@@ -128,12 +128,10 @@ foci(y, x, parPlat = cls)
 }
 }
 \references{
-Azadkia, M. and Chatterjee, S. (2019). A simple measure
-of conditional dependence.
+Azadkia, M. and Chatterjee, S. (2019). A simple measure of conditional dependence.
 \url{https://arxiv.org/pdf/1910.12327.pdf}.
 
-Matloff, N. (2016). Software Alchemy: Turning Complex
-Statistical Computations into Embarrassingly-Parallel Ones.
+Matloff, N. (2016). Software Alchemy: Turning Complex Statistical Computations into Embarrassingly-Parallel Ones.
 \emph{J. of Stat. Software.}
 }
 \seealso{

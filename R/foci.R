@@ -160,11 +160,9 @@ foci_main <- function(Y, X, num_features = NULL, stop = TRUE, numCores = paralle
 #' @import data.table
 #' @export
 #' @author Mona Azadkia, Sourav Chatterjee, and Norman Matloff
-#' @references Azadkia, M. and Chatterjee, S. (2019). A simple measure
-#' of conditional dependence.
+#' @references Azadkia, M. and Chatterjee, S. (2019). A simple measure of conditional dependence.
 #' \url{https://arxiv.org/pdf/1910.12327.pdf}.
-#' @references Matloff, N. (2016). Software Alchemy: Turning Complex
-#' Statistical Computations into Embarrassingly-Parallel Ones.
+#' @references Matloff, N. (2016). Software Alchemy: Turning Complex Statistical Computations into Embarrassingly-Parallel Ones.
 #' \emph{J. of Stat. Software.}
 #' @seealso \code{\link{codec}}, \code{\link[XICOR]{xicor}}
 #' @examples
