@@ -1,7 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+<a href={https://github.com/Ehyaei/FOCI}><img src="man/figures/FOCI.svg" alt="FOCI LOGO" align="right" width="160" style="padding: 0 15px; float: right;"/>
+
 # FOCI
+
+[![R build
+status](https://github.com/Ehyaei/FOCI/workflows/R-CMD-check/badge.svg)](https://github.com/Ehyaei/FOCI/actions)
+[![](https://img.shields.io/badge/devel%20version-0.1.3-green.svg)](https://github.com/Ehyaei/FOCI)
+[![](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 
 <!-- badges: start -->
 

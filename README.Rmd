@@ -23,11 +23,18 @@ knitr::opts_chunk$set(
 )
 ```
 
+<a href={https://github.com/Ehyaei/FOCI}><img src="man/figures/FOCI.svg" alt="FOCI LOGO" align="right" width="160" style="padding: 0 15px; float: right;"/>
+
 # FOCI
 
-<!-- badges: start -->
-[![R-CMD-check](https://github.com/ehyaei/FOCI/workflows/R-CMD-check/badge.svg)](https://github.com/ehyaei/FOCI/actions)
-<!-- badges: end -->
+```{r, echo = FALSE, results='asis', message=FALSE,eval=TRUE}
+cat(
+  badger::badge_github_actions("Ehyaei/FOCI"),
+  badger::badge_devel("Ehyaei/FOCI", "green"),
+  badger::badge_lifecycle("stable")
+)
+```
+
 
 Package `FOCI`, implements the variable selection algorithm **Feature Ordering by Conditional Independence** algorithm introduced in the paper  [*A Simple Measure Of Conditional Dependence*](https://arxiv.org/pdf/1910.12327.pdf). It produces an ordering of the predictors according to their predictive power. This ordering is used for variable selection without putting any assumption on the distribution of the data or assuming any particular underlying model. The simplicity of the estimation of the conditional dependence coefficient makes it an efficient method for variable ordering and variable selection that can be used for high dimensional settings.
 
