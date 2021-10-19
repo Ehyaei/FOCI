@@ -1,6 +1,13 @@
-@article{azadkia2019simple,
-  title={A simple measure of conditional dependence},
-  author={Azadkia, Mona and Chatterjee, Sourav},
-  journal={arXiv preprint arXiv:1910.12327},
-  year={2019}
-}
+cff-version: 1.2.0
+message: "If you use this package, please cite it as below."
+authors:
+- family-names: "Azadkia"
+  given-names: "Mona"
+- family-names: "Chatterjee"
+  given-names: "Sourav"
+- family-names: "Matloff"
+  given-names: "Norman"
+title: "Feature Ordering by Conditional Independence Algorithm"
+version: 0.1.4
+date-released: 2021-10-19
+url: "https://github.com/ehyaei/FOCI"
