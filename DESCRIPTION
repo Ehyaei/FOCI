@@ -16,7 +16,6 @@ Description: Feature Ordering by Conditional Independence (FOCI) is a variable s
     For more information, see the paper: Azadkia and Chatterjee (2019),"A simple measure of conditional dependence" <arXiv:1910.12327>.
 License: GPL (>= 3)
 Encoding: UTF-8
-LazyData: true
 Suggests: 
     knitr,
     rmarkdown,
@@ -30,6 +29,7 @@ Imports:
   proxy, 
   parallel, 
   gmp
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Language: en-US

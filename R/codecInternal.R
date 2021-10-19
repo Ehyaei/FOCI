@@ -10,8 +10,8 @@
 ##############################################
 
 
-#' .estimateConditionalQ -------------------------------------------------------------------------
-#' Estimate Q(Y, Z | X)
+# .estimateConditionalQ -------------------------------------------------------------------------
+# Estimate Q(Y, Z | X)
 #
 # Estimate Q(Y, Z | X), the numinator of the measure of conditional dependence of Y on Z given X
 #
